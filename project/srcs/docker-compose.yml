@@ -63,13 +63,13 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: ./data/wordpress/
+      device: /home/vagevorg/data/wordpress
 
   db-volume:
     driver_opts:
       o: bind
       type: none
-      device: ./data/mariadb
+      device: /home/vagevorg/data/mariadb
 
 networks:
     inception:

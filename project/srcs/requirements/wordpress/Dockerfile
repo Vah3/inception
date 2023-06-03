@@ -39,4 +39,8 @@ RUN apk add php php-json php-phar php-mbstring php-iconv
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
-CMD ["/usr/sbin/php-fpm8", "-F"]
+
+COPY ./requirements/wordpress/conf/create_user.sh ..
+RUN chmod 777 ../create_user.sh
+ENTRYPOINT sh ../create_user.sh
+#CMD ["/usr/sbin/php-fpm8", "-F"]
