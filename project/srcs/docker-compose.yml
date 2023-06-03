@@ -13,10 +13,12 @@ services:
     volumes:
       - ./requirements/nginx/conf/:/etc/nginx/http.d/
       - ./requirements/nginx/tools:/etc/nginx/ssl/
-      - /home/vagevorg/simple_docker_nginx_html/public/html:/var/www/
+      - wp-volume:/var/www/
     restart: always
     networks:
       - inception
+    env_file:
+      - .env
 
   mariadb:
     build:
@@ -33,6 +35,8 @@ services:
     restart: always
     networks:
       - inception
+    env_file:
+      - .env
 
   wordpress:
     build:
@@ -50,6 +54,8 @@ services:
       - wp-volume:/var/www/
     networks:
       - inception
+    env_file:
+      - .env
 
 volumes:
   wp-volume:
