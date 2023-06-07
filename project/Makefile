@@ -19,8 +19,7 @@ clean: down
 	@sudo rm -rf ~/data/mariadb/*
 
 # Осторожно! Fclean удаляет все образы Docker которые есть на машине!
-fclean:
-	@docker stop $$(docker ps -qa)
+fclean: stop
 	@docker system prune --all --force --volumes
 	@docker network prune --force
 	@docker volume prune --force
